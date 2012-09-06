@@ -1,0 +1,13 @@
+<ul class="breadcrumb">
+	{% for item in breadcrumb %}
+		<li>
+		{% if item['link'] %}
+			<a href="{{ item['link'] }}">{{ item['title'] }}</a>
+		{% else %}
+			{{ item['title'] }}
+		{% endif %}
+		{% if !forloop.last %}
+			&rarr;
+		{% endif %}
+	{% endfor %}
+</ul>
