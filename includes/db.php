@@ -3,7 +3,8 @@ class Db extends PDO {
     function __construct() {
         parent::__construct('mysql:host=' . DB_HOSTNAME . ';dbname=' . DB_NAME, DB_USERNAME, DB_PASSWORD,
             array(
-                PDO::ATTR_PERSISTENT => DB_PERSISTENT
+                PDO::ATTR_PERSISTENT => DB_PERSISTENT,
+                PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
             )
         );
         
