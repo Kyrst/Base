@@ -16,5 +16,6 @@ define('DB_NAME', '');
 define('DB_PERSISTENT', false);
 
 // Other
+define('PROJECT_NAME', '');
 define('SALT', '');
 ?>

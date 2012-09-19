@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <title>{{ page_title }}</title>
         <link href="/styles/normalize.css" rel="stylesheet">
+        <link href="/styles/reset.css" rel="stylesheet">
         <link href="/styles/base.css" rel="stylesheet">
         {% for css_file in css_files %}
             <link href="{{ css_file }}" rel="stylesheet">
@@ -14,8 +15,8 @@
             {% block content %}{% endblock %}
         </div>
         <div id="overlay" class="overlay">
-            <span id="overlay_title"></span>
-            <div id="overlay_message"></div>
+            <span class="overlay-title"></span>
+            <div class="overlay-message"></div>
             <div class="clear"></div>
             <a href="javascript:" class="close"><img src="/images/close.png" width="29" height="29" alt=""></a>
             <div class="clear"></div>

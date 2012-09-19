@@ -51,9 +51,9 @@ $skinner->assign('user', $user);
 
 //$skinner->addBreadcrumb('PROJECT_NAME', '/');
 
-register_shutdown_function(function() {
+/*register_shutdown_function(function() {
     global $start_time;
     
     echo '<hr>Executed in ', number_format(microtime(true) - $start_time, 6), ' sec';
-});
+});*/
 ?>

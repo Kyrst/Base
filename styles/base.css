@@ -1,40 +1,18 @@
 body {
+	margin:0;
     background-color:#FFF;
-	color:#222;
-    font-size:normal 62.5%/100% Arial;
+	color:#333;
+    font-size:normal 14px/20px Arial, sans-serif;
 }
 
 a {
-    color:#00F;
+    color:#0088CC;
+	text-decoration:none;
 }
 
 a:hover {
-    text-decoration:none;
-}
-
-.clear {
-    clear:both;
-}
-
-.clearfix:after {
-	content:".";
-	display:block;
-	clear:both;
-	visibility:hidden;
-	line-height:0;
-	height:0;
-}
- 
-.clearfix {
-	display:inline-block;
-}
- 
-html[xmlns] .clearfix {
-	display:block;
-}
- 
-* html .clearfix {
-	height:1%;
+	color:#005580;
+	text-decoration:underline;
 }
 
 .overlay {
@@ -57,14 +35,14 @@ html[xmlns] .clearfix {
 	top:-8px;
 }
 
-#overlay_title {
+.overlay-title {
 	display:block;
 	font-size:1.3em;
 	font-weight:bold;
 	margin-bottom:14px;
 }
 
-#overlay_message {
+.overlay-message {
 	font-size:.9em;
 	margin-bottom:0;
 }
