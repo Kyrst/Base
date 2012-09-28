@@ -14,16 +14,15 @@ class UserHandler extends BaseHandler {
         }
     }
     
-    public function register($username, $password, $email, $first_name, $last_name, $timezone_id) {
+    public function register($email, $password, $first_name, $last_name, $timezone_id) {
         include ABS_PATH . 'libs/PasswordLib/PasswordLib.php';
         $password_hasher = new PasswordLib\PasswordLib;
         
         $this->db->exec('
         INSERT INTO users
         SET
-            email = ' . $this->db->quote(trim($username)) . ',
-            password = ' . $this->db->quote($password_hasher->createPasswordHash(trim($password))) . ',
             email = ' . $this->db->quote(trim($email)) . ',
+            password = ' . $this->db->quote($password_hasher->createPasswordHash(trim($password))) . ',
             first_name = ' . $this->db->quote(trim($first_name)) . ',
             last_name = ' . $this->db->quote(trim($last_name)) . ',
             registered = ' . $_SERVER['REQUEST_TIME'] . '
@@ -50,13 +49,13 @@ class UserHandler extends BaseHandler {
         $this->user = $_SESSION['user'];
     }
     
-    public function login($username, $password) {
-        $username = trim($username);
+    public function login($email, $password) {
+        $email = trim($email);
         
         $result_user = $this->db->query('
-        SELECT id, username, password, email, first_name, last_name, admin
+        SELECT id, email, password, first_name, last_name, admin
         FROM users
-        WHERE username = ' . $this->db->quote($username) . '
+        WHERE email = ' . $this->db->quote($email) . '
         LIMIT 1
         ');
         
@@ -76,15 +75,14 @@ class UserHandler extends BaseHandler {
         SET
             last_login = ' . $_SERVER['REQUEST_TIME'] . ',
             num_logins = num_logins + 1
-        ');
+        WHERE id = ' . $this->db->quote($user['id'])
+        );
         
         $_SESSION['user'] = array(
             'id' => $user['id'],
-            'username' => $user['username'],
             'email' => $user['email'],
             'first_name' => $user['first_name'],
-            'last_name' => $user['last_name'],
-            'admin' => ($user['admin'] === 'yes')
+            'last_name' => $user['last_name']
         );
         
         return true;
@@ -96,10 +94,6 @@ class UserHandler extends BaseHandler {
     
     public function isLoggedIn() {
         return $this->user ? $this->user : false;
-    }
-    
-    public function isAdmin() {
-        return $this->user && $this->user['admin'];
     }
     
     public function getAll() {
