@@ -26,7 +26,7 @@ if ( file_exists(ABS_PATH . CSS_DIR . $css_filename) ) {
     $css_autoloaded_files[] = '/' . CSS_DIR . $css_filename;
 }
 
-$skinner = new Skinner($js_autoloaded_files, $css_autoloaded_files);
+$skinner = new Skinner($css_autoloaded_files, $js_autoloaded_files);
 
 if ( filter_input(INPUT_POST, 'log_in') ) {
 	if ( $user_handler->login($_POST['username'], $_POST['password']) ) {
