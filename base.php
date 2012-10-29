@@ -1,5 +1,5 @@
 <?php
-define('ABS_PATH', dirname(__FILE__) . '/');
+define('ABS_PATH', __DIR__ . '/');
 
 error_reporting(-1);
 
