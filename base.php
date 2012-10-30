@@ -11,14 +11,14 @@ set_error_handler(function($errno, $errstr, $errfile, $errline) {
     die($errstr . ' in <strong>' . $errfile . '</strong> on line <strong>' . $errline . '</strong>');
 });
 
-include ABS_PATH . 'includes/settings.php';
-
-include ABS_PATH . 'includes/db.php';
-
 session_start();
 
-include ABS_PATH . 'includes/functions.php';
+include ABS_PATH . 'includes/settings.php';
 
+date_default_timezone_set(TIMEZONE);
+
+include ABS_PATH . 'includes/db.php';
+include ABS_PATH . 'includes/functions.php';
 include ABS_PATH . 'includes/handlers/include.php';
 
 $user = $user_handler->isLoggedIn();

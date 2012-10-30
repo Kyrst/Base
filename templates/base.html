@@ -3,12 +3,8 @@
     <head>
         <meta charset="utf-8">
         <title>{{ page_title }}</title>
-        <link href="/styles/normalize.css" rel="stylesheet">
-        <link href="/styles/reset.css" rel="stylesheet">
-        <link href="/styles/base.css" rel="stylesheet">
-        {% for css_file in css_files %}
-            <link href="{{ css_file }}" rel="stylesheet">
-        {% endfor %}
+        <meta name="description" value="{{ meta_description }}">
+        <link href="/scripts/minify_css.php?{% for css_file in css_files %}f[]={{ css_file }}{% if !forloop.last %}&amp;{% endif %}{% endfor %}" rel="stylesheet">
     </head>
     <body>
         <div id="container">
@@ -23,7 +19,14 @@
         </div>
         <script src="/scripts/js/jquery.js"></script>
         <script src="/scripts/js/jquery.tools.js"></script>
-        <script src="/scripts/js/base.js"></script>
+		{% if js_vars|length > 0 %}
+			<script>
+				{% for name, value in js_vars %}
+					var {{ name }} = '{{ value }}';
+				{% endfor %}
+			</script>
+		{% endif %}
+        <script src="/scripts/minify_js.php?{% for js_file in js_files %}f[]={{ js_file }}{% if !forloop.last %}&amp;{% endif %}{% endfor %}"></script>
         {% if overlay %}
             <script>
                 $(document).ready(function() {
@@ -31,9 +34,6 @@
                 });
             </script>
         {% endif %}
-        {% for js_file in js_files %}
-            <script src="{{ js_file }}"></script>
-        {% endfor %}
         {% block bottom %}{% endblock %}
     </body>
 </html>

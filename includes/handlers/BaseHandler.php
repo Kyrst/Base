@@ -6,6 +6,7 @@ abstract class BaseHandler {
         $this->db = new Db();
     }
     
+    // Make URL-friendly version of a string
     public static function slugify($str) {
         if ( function_exists('iconv') ) {
             $str = @iconv('UTF-8', 'ASCII//TRANSLIT', $str);

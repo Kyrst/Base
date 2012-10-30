@@ -4,7 +4,7 @@ if ( !class_exists('BaseHandler') ) {
 }
 
 class UserHandler extends BaseHandler {
-    private $user = NULL;
+    private $user;
     
     function __construct() {
         parent::__construct();
@@ -96,10 +96,11 @@ class UserHandler extends BaseHandler {
         return $this->user ? $this->user : false;
     }
     
-    public function getAll() {
+    public function getAll($limit = 0) {
         return $this->db->query('
         SELECT *
         FROM users
+        ' . ($limit ? 'LIMIT ' . $limit : '') . '
         ');
     }
     

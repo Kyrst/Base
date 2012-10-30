@@ -16,6 +16,10 @@ define('DB_NAME', '');
 define('DB_PERSISTENT', false);
 
 // Other
-define('PROJECT_NAME', '');
+define('DEFAULT_PAGE_TITLE', '');
+define('DEFAULT_META_DESCRIPTION', '');
+
+define('TIMEZONE', 'America/Los_Angeles');
+
 define('SALT', '');
 ?>

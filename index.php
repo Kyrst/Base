@@ -1,5 +1,5 @@
 <?php
 include 'init.php';
 
-$skinner->display('index.html', 'Base');
+$skinner->display('index.html');
 ?>
