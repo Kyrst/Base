@@ -29,7 +29,7 @@ if ( file_exists(ABS_PATH . JS_DIR . $js_filename) ) {
 $skinner = new Skinner($css_autoloaded_files, $js_autoloaded_files);
 
 if ( filter_input(INPUT_POST, 'log_in') ) {
-	if ( $user_handler->login($_POST['username'], $_POST['password']) ) {
+	if ( $user_handler->login($_POST['email'], $_POST['password']) ) {
 		header('Location: /');
 	} else {
 		/*'$skinner->showOverlay(
