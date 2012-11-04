@@ -1,5 +1,5 @@
 <?php
-include ABS_PATH . 'libs/haanga/haanga.php';
+include ABS_PATH . 'libs/Haanga/Haanga.php';
 
 class Skinner extends Haanga {
     private $vars = array();
